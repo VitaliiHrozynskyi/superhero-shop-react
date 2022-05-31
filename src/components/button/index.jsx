@@ -14,7 +14,7 @@ export default function(params){
   let modifiers = params.modifiers || [];
 
   // геннеруємо назви класів модифікаторів
-  const className = `button ${modifiers.map(modifier => `button_${modifier}`)}`;
+  const className = `button ${modifiers.map(modifier => `button_${modifier}`).join(' ')}`;
 
   // описуємо рендер
   return (
