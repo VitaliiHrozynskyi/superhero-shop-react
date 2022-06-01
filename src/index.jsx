@@ -8,6 +8,7 @@ const rootElement = document.createElement('div');
 document.body.append(rootElement);
 const app = createRoot(rootElement);
 
+import State from './State';
 /**
  * тут основна точка входу в реакт
  * компонент роутінгу описує як обробляти різни запити
@@ -16,10 +17,12 @@ const app = createRoot(rootElement);
  * у попередніх маршрутів не було збігів.
  */
 app.render(
-<BrowserRouter>
-  <Routes>
-    <Route path="about" element={<UserProfilePage />} />
-    <Route path="*" element={<IndexPage />} />
-  </Routes>
-</BrowserRouter>
+<State>
+  <BrowserRouter>
+    <Routes>
+      <Route path="about" element={<UserProfilePage />} />
+      <Route path="*" element={<IndexPage />} />
+    </Routes>
+  </BrowserRouter>
+</State>
 );

@@ -14,8 +14,7 @@ import { Header } from '../../components'
 export default function (){
   return (
     <div>
-      <Header authorized={false}/>
-      index page will be here
+      <Header/>
     </div>
   )
 }

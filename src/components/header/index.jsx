@@ -1,27 +1,37 @@
+// Це розумний компонент, він знає звідки беруться дані,
+// зазвичай задача розумного компоненту, згенерувати параметри
+// для тупого компонента
+
+
 // імпортуємо реакт якщо використовуємо реакт компонент
-import React from 'react';
+import React, {useContext} from 'react';
 
-// імпортуємо стилі
-import './style.css';
+// будемо отримувати дані з контексту
+import {Context} from "../../State";
 
-// імпортуємо компонент кнопки, зверніть увагу,
-// що усі реакт компоненти ЗАВЖДИ починаються з великої літери
-import Button from '../button';
+// імпортуємо "тупий" компонент
+import Header from './component'
 
-export default function(params){
+
+export default function(){
+
+  // отримаємо поточний стан в контексті, та функцію для зміни стану
+  const {state, setState} = useContext(Context);
+
+  //зробимо функцію, що міняє стан авторизації на протилежний
+  function onButtonClick() {
+    setState({
+      ...state,
+      authorized: !state.authorized
+    })
+  }
+
+  // рендеримо тупий компонент
   return (
-    <div className="header">
-      <div className="header__logo"><img src="http://placehold.jp/150x50.png"/></div>
-      <div className="header__menu">{params.menu.join(' ')}</div>
-      {/* Використовуємо компонент кнопки, зверніть увагу, що параметри кнопки залежать від параметрів які передані компоненту хідер */}
-      {params.authorized ? 'A' : 'U'}
-      <div className="header__controls">
-        <Button
-          modifiers={['big']}
-          text={ params.authorized ? "unauthorize" : 'authorize' }
-          onClick={ params.onClick }
-        />
-      </div>
-    </div>
+    <Header
+      menu={state.menu}
+      onClick={onButtonClick}
+      authorized={state.authorized}
+    />
   )
 }
