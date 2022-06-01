@@ -1,7 +1,12 @@
 .button{
   color: #fff;
+  display: block;
+  padding: 5px;
   background: black;
   position: relative;
+  border-radius: 20px;
+  min-width: 100px;
+  text-align: center;
 }
 
 .button_big{

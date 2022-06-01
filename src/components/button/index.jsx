@@ -18,7 +18,7 @@ export default function(params){
 
   // описуємо рендер
   return (
-    <div className={className}>
+    <div className={className} onClick={params.onClick || false}>
       {/* якщо в параметрах передано `link` генеруємо відповідний тег a */}
       {params.link && <Link to={params.link} />}
       {/* додаємо текст кнопки */}
